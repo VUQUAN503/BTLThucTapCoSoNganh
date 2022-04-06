@@ -50,6 +50,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>9.5.0-SNAPSHOT.jre11-preview</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-core</artifactId>
             <version>3.1.8.Final</version>
