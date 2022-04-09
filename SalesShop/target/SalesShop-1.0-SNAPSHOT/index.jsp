@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to our project</title>
+        <title>JSP - Hello World</title>
     </head>
     <body>
-        <h1><%= "welcome to our project!" %></h1>
-        <br/>
+        <h1><%= "Welcome to our project!" %></h1>
     </body>
 </html>
