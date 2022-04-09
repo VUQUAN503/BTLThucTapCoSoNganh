@@ -14,9 +14,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://localhost:1433;databaseName=SalesShop";
             return DriverManager.getConnection(url, "sa", "1");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -30,6 +28,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         ResultSet resultSet = null;
         try {
             con = getConnection();
+            assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);
             resultSet = statement.executeQuery();
@@ -52,6 +51,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         int id = 0;
         try {
             con = getConnection();
+            assert con != null;
             con.setAutoCommit(false);
             statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             setParameter(statement, params);
@@ -73,11 +73,55 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     }
 
     @Override
+    public <G> G getSingleObject(String sql, Integer columnIndex, Class<G> gClass, Object... params) {
+        Connection con = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        G data = null;
+        try{
+            con = getConnection();
+            assert con != null;
+            statement = con.prepareStatement(sql);
+            setParameter(statement, params);
+            resultSet = statement.executeQuery();
+            data = getParameter(resultSet, gClass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeCon(con, statement, resultSet);
+        }
+        return data;
+    }
+
+    @Override
+    public <G> List<G> getListObject(String sql, Class<G> gClass, Object... params) {
+        List<G> list = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try{
+            con = getConnection();
+            assert con != null;
+            statement = con.prepareStatement(sql);
+            setParameter(statement, params);
+            resultSet = statement.executeQuery();
+            while (resultSet.next())
+                list.add((G) resultSet.getObject(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeCon(con, statement, resultSet);
+        }
+        return list;
+    }
+
+    @Override
     public Boolean updateOrDelete(String sql, Object... params) {
         Connection con = null;
         PreparedStatement statement = null;
         try {
             con = getConnection();
+            assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);
             statement.executeUpdate();
@@ -113,9 +157,9 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
     }
 
-    private <G> G getParameter(ResultSet rs, Integer columnIndex, Class<G> gClass) {
+    private <G> G getParameter(ResultSet rs, Class<G> gClass) {
         try {
-            return rs.getObject(columnIndex, gClass);
+            return rs.getObject(1, gClass);
         } catch (SQLException e) {
             return null;
         }

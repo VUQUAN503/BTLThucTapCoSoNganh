@@ -10,8 +10,9 @@ public class Product implements Serializable {
     private String description;
     private int categoryID;
 
-    public Product(int productID, String productName, String urlImage, int price, String description, int categoryID) {
-        this.productID = productID;
+    public Product(){}
+
+    public Product(String productName, String urlImage, int price, String description, int categoryID) {
         this.productName = productName;
         this.urlImage = urlImage;
         this.price = price;
@@ -19,11 +20,13 @@ public class Product implements Serializable {
         this.categoryID = categoryID;
     }
 
-    public Product(String productName, String urlImage, int price, String description) {
+    public Product(int productID, String productName, String urlImage, int price, String description, int categoryID) {
+        this.productID = productID;
         this.productName = productName;
         this.urlImage = urlImage;
         this.price = price;
         this.description = description;
+        this.categoryID = categoryID;
     }
 
     public int getProductID() {
