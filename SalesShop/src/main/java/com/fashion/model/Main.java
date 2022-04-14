@@ -1,22 +1,35 @@
 package com.fashion.model;
 
-import com.fashion.dao.impl.AbstractDAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.lang.reflect.Method;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=SalesShop";
-            Connection con = DriverManager.getConnection(url, "sa", "1");
-            System.out.println("success");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+//        Document doc = new Document();
+//        try {
+//            PdfWriter.getInstance(doc, new FileOutputStream("D:\\test.pdf"));
+//            doc.open();
+//            PdfPTable table = new PdfPTable(5);
+//            table.addCell(PdfPCellUtil.setContent("STT"));
+//            table.addCell(PdfPCellUtil.setContent("Product Name"));
+//            table.addCell(PdfPCellUtil.setContent("Price"));
+//            table.addCell(PdfPCellUtil.setContent("Amount"));
+//            table.addCell(PdfPCellUtil.setContent("Into Money"));
+//            table.addCell(PdfPCellUtil.setContent("1"));
+//            table.addCell(PdfPCellUtil.setContent("Bim Bim"));
+//            table.addCell(PdfPCellUtil.setContent("5000"));
+//            table.addCell(PdfPCellUtil.setContent("5"));
+//            table.addCell(PdfPCellUtil.setContent("25000"));
+//            table.addCell(PdfPCellUtil.setContent("2"));
+//            table.addCell(PdfPCellUtil.setContent("Cheeses"));
+//            table.addCell(PdfPCellUtil.setContent("1500"));
+//            table.addCell(PdfPCellUtil.setContent("1"));
+//            table.addCell(PdfPCellUtil.setContent("1500"));
+//            doc.add(table);
+//            doc.close();
+//        } catch (DocumentException | FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 }

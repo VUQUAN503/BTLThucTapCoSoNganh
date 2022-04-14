@@ -19,5 +19,13 @@
         <servlet-name>Jersey REST Service</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
-</web-app>
 
+    <filter>
+        <filter-name>Configure</filter-name>
+        <filter-class>com.fashion.cors.Configure</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Configure</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

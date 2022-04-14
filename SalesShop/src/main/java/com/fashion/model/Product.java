@@ -7,8 +7,29 @@ public class Product implements Serializable {
     private String productName;
     private String urlImage;
     private int price;
+    private int status;
     private String description;
     private int categoryID;
+
+    public Product(){}
+
+    public Product(String productName, String urlImage, int price, String description, int categoryID) {
+        this.productName = productName;
+        this.urlImage = urlImage;
+        this.price = price;
+        this.description = description;
+        this.categoryID = categoryID;
+    }
+
+    public Product(int productID, String productName, String urlImage, int price, int status, String description, int categoryID) {
+        this.productID = productID;
+        this.productName = productName;
+        this.urlImage = urlImage;
+        this.price = price;
+        this.status = status;
+        this.description = description;
+        this.categoryID = categoryID;
+    }
 
     public Product(int productID, String productName, String urlImage, int price, String description, int categoryID) {
         this.productID = productID;
@@ -17,13 +38,6 @@ public class Product implements Serializable {
         this.price = price;
         this.description = description;
         this.categoryID = categoryID;
-    }
-
-    public Product(String productName, String urlImage, int price, String description) {
-        this.productName = productName;
-        this.urlImage = urlImage;
-        this.price = price;
-        this.description = description;
     }
 
     public int getProductID() {
@@ -52,6 +66,14 @@ public class Product implements Serializable {
 
     public int getPrice() {
         return price;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public void setPrice(int price) {

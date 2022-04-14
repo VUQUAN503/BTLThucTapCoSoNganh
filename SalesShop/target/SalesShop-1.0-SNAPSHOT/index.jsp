@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to our project</title>
+        <title>BTL Thực Tập Cơ Sở Ngành</title>
     </head>
     <body>
-        <h1><%= "welcome to our project!" %></h1>
-        <br/>
+        <h1 style="color: orange"><%= "Welcome to our project" %></h1>
     </body>
 </html>
