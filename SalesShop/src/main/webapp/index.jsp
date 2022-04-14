@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP - Hello World</title>
+        <title>BTL Thực Tập Cơ Sở Ngành</title>
     </head>
     <body>
-        <h1><%= "Welcome to our project!" %></h1>
+        <h1 style="color: orange"><%= "Welcome to our project" %></h1>
     </body>
 </html>

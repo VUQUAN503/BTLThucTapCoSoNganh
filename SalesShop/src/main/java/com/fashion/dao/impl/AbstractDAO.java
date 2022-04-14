@@ -9,11 +9,23 @@ import java.util.List;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
+
     private Connection getConnection(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://localhost:1433;databaseName=SalesShop";
             return DriverManager.getConnection(url, "sa", "1");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Connection getConnectionMySQL(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/SalesShop";
+            return DriverManager.getConnection(url, "root", "");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -159,9 +171,11 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 
     private <G> G getParameter(ResultSet rs, Class<G> gClass) {
         try {
-            return rs.getObject(1, gClass);
+            if(rs.next())
+                return rs.getObject(1, gClass);
         } catch (SQLException e) {
-            return null;
+            e.printStackTrace();
         }
+        return null;
     }
 }

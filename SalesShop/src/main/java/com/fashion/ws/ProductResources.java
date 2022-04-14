@@ -1,5 +1,6 @@
 package com.fashion.ws;
 
+import com.fashion.dao.ICategoryDAO;
 import com.fashion.dao.IProductDAO;
 import com.fashion.model.Product;
 
@@ -11,6 +12,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Path("/products")
 public class ProductResources {
@@ -18,14 +22,16 @@ public class ProductResources {
     @Inject
     private IProductDAO dao;
 
+    @Inject
+    private ICategoryDAO categoryDAO;
+
     @Context
     private UriInfo uriInfo;
 
-
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Product getName(){
-        return dao.findOne(4);
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello(){
+        return "Welcome to our project";
     }
 
     @GET
@@ -39,7 +45,12 @@ public class ProductResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("category/{categoryID}")
     public Response getByCategory(@PathParam("categoryID") int categoryID){
-        return Response.status(Response.Status.OK).entity(dao.getByCategoryID(categoryID)).build();
+        Map<Object, Object> data = new HashMap<>();
+        List<Product> list = dao.getByCategory(categoryID);
+        data.put("name", categoryDAO.getName(categoryID));
+        data.put("amount", list.size());
+        data.put("products", list);
+        return Response.status(Response.Status.OK).entity(data).build();
     }
 
     @GET
@@ -47,7 +58,12 @@ public class ProductResources {
     @Path("/category/{categoryID}/{limit}")
     public Response getThreeItemsByCategoryID(@PathParam("categoryID")int categoryID, @PathParam("limit") int limit)
     {
-        return Response.status(Response.Status.OK).entity(dao.getThreeItemsByCategoryID(categoryID, limit)).build();
+        Map<Object, Object> data = new HashMap<>();
+        List<Product> list = dao.getThreeItemsByCategoryID(categoryID, limit);
+        data.put("name", categoryDAO.getName(categoryID));
+        data.put("amount", list.size());
+        data.put("products", list);
+        return Response.status(Response.Status.OK).entity(data).build();
     }
 
     @POST

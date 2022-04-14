@@ -1,6 +1,7 @@
 package com.fashion.model;
 
-import com.fashion.dao.impl.AddressDAO;
+
+import java.lang.reflect.Method;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,6 +31,5 @@ public class Main {
 //        } catch (DocumentException | FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println(new AddressDAO().getProvinces());
     }
 }

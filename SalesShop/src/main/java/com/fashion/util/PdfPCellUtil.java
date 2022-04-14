@@ -36,18 +36,18 @@ public class PdfPCellUtil {
         return cell;
     }
 
-    public static void writeTable(Objects... params)
+    public static PdfPTable writeRow(PdfPTable table,  Objects... params)
     {
         Document doc = new Document();
         try {
             PdfWriter.getInstance(doc, new FileOutputStream("D:\\test.pdf"));
             doc.open();
-            PdfPTable table = new PdfPTable(params.length);
             for (Objects param : params) table.addCell(setContent(param.toString()));
             doc.add(table);
             doc.close();
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
+        return table;
     }
 }
