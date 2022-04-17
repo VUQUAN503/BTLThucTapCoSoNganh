@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-    <p>Home Page</p>
+    <p>Header Page</p>
 </body>
 </html>
