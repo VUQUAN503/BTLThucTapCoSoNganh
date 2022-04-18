@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./address.css">
+</head>
+<body>
+    <div class="info_address">
+        <div class="info_address_header">
+            <h2 class="my_address">
+                Địa chỉ của tôi
+            </h2>
+            
+        </div>
+        <div class="info_address_content">
+            <div class="info_address_content_left">
+                <div class="address_content_row">
+                    <div class="my_label">
+                        Họ và tên
+                    </div>
+                    <div class="my_name_value">Lê Văn Tùng</div>
+                </div>
+                <div class="address_content_row">
+                    <div class="my_label">
+                        Số điện thoại
+                    </div>
+                    <div class="my_phone_value">
+                        029384754934
+                    </div>
+                </div>
+                <div class="address_content_row">
+                    <div class="my_label">
+                        Địa chỉ
+                    </div>
+                    <div class="my_address_value">
+                        Xóm Tân Mĩ 1, xã Tân Quang, thành phố Sông Công, tỉnh Thái Nguyên
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="info_address_content_right">
+                <div class="btn_repair">
+                    Sửa
+                </div>
+                
+            </div>
+        </div>
+
+
+    </div>
+    <div class="fix_address_container hide">
+        <div class="overlay"></div>
+        <div class="fix_address_body">
+            <div class="fix_address_header">
+                Chỉnh sửa địa chỉ
+            </div>
+            <form action="">
+                <div class="fix_address_main">
+                    <div class="fix_address_main_row">
+                        <div class="div_reletive row_fix_name">
+                            <input class="fix_input_name" type="text">
+                            <small></small>
+                            <span></span>
+                            <div class="fix_label">
+                                Họ tên
+                            </div>
+                        </div>
+                        <div class="div_reletive">
+                            <input class="fix_input_phone" type="text">
+                            <small></small>
+                            <span></span>
+                            <div class="fix_label">
+                                Điện thoại
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fix_address_main_row">
+                        <div class="div_reletive">
+                            <input type="text" class="fix_input_content">
+                            <small></small>
+                            <span></span>
+                            <div class="fix_label">
+                                Tỉnh/Thành phố, Quận/Huyện, Phường/Xã
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fix_address_main_row">
+                        <div class="div_reletive">
+                            <input type="text" class="fix_input_specific">
+                            <small></small>
+                            <span></span>
+                            <div class="fix_label">
+                                Địa chỉ cụ thể
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </form>
+            <div class="fix_address_bottom">
+                <div class="ad_btn btn_fix_back">
+                    Trở Lại
+                </div>
+                <div class="ad_btn btn_submit">
+                    Hoàn Thành
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./address.js"></script>
+</body>
+</html>

@@ -8,10 +8,12 @@
 .smr-cart-container {
     width: 1200px;
     margin: auto;
+    position: relative;
+    
     display: flex;
-    background-color: rgba(128, 127, 127, 0.125);
+    background-color: var(--primary);
     padding: 15px;
-    box-shadow: 1px 0 5px #333;
+ 
 
 }
 .smr-cart-left {
@@ -88,7 +90,7 @@
 }
 .smr-item-price {
     font-size: 18px;
-    color: #f57224;
+    color: var(--primary);
     font-weight: 500;
     display: flex;
 }
@@ -177,7 +179,7 @@
     display: flex;
 }
 .product-price-number {
-    color: #f57224;
+    color: var(--primary);
 }
 .product-price-d {
     margin-left: 5px;
@@ -216,7 +218,7 @@
 }
 .sum-price-number {
     font-size: 18px;
-    color: #f57224;
+    color: var(--primary);
 }
 
 .btn-confirm {

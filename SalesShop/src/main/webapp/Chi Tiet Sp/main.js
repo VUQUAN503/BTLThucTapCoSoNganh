@@ -7,7 +7,7 @@ const stateNumber = $('.sm-amount-number');
 const selectColors = $$('.select-item-color')
 const selectSize = $$('.select-item-size')
 const imgMain = $('.sm-image-main');
-const imgItems = $$('.sm-image-img');
+const imgItems = $$('.sm-item-pic');
 const btnOpenSize = $('.table-size')
 const tableSize = $('.sm-modal-table-size')
 const addCart = $('.btn-add-cart')
@@ -104,3 +104,47 @@ prevBtn.addEventListener('click', () => {
 })
 
 
+window.addEventListener("load", function(){
+    const sliderMain = document.querySelector('.sm-image-list')
+    const btnPrev = document.querySelector('.prev_img')
+    const btnNext = document.querySelector('.next_img')
+    const items = document.querySelectorAll('.sm-image-item')
+    const itemsWidth = items[0].offsetWidth;
+    const sliderLeng = items.length;
+    console.log(items);
+    console.log(sliderLeng, itemsWidth);
+    let index = 0;
+    console.log(itemsWidth);
+    btnNext.addEventListener('click', function(){
+        handleChangeSlide(1)
+    });
+    btnPrev.addEventListener('click', function(){
+        handleChangeSlide(-1)
+    });
+
+    
+    function handleChangeSlide(value){
+        
+        if(value === 1){
+            
+            if(index < sliderLeng - 5){
+                index++;
+            }
+        
+            sliderMain.style = `transform: translateX(${-itemsWidth*index}px);`;
+            
+        }else if(value === -1){
+            
+            if(index === 0) {
+               index = index
+            }else {
+                index--;
+            } 
+            
+            sliderMain.style = `transform: translateX(${-itemsWidth*index}px);`;
+            
+            
+        }
+        
+    }
+})
