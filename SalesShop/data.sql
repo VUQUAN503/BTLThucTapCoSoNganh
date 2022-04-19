@@ -3,44 +3,45 @@ CREATE database SalesShop;
 
 CREATE TABLE Product(
 	ID int PRIMARY KEY AUTO_INCREMENT,
-	Name varchar(50     ),
-	UrlImage varchar(50     ),
-	Price int NULL,
-    Status int,
-	Description nvarchar(300),
-	CategoryID int NOT NULL
-     );
+	name varchar(50),
+	image varchar(50),
+	price int NULL,
+    status int,
+	description nvarchar(300),
+	categoryID int NOT NULL
+);
 
-CREATE FUNCTION       fn_getProductByCate       ryID  (@cate       ryID int     );
+CREATE FUNCTION       fn_getProductByCategoryID  (@categoryID int);
 		RETURNS TABLE
 AS
-	RETURN SELECT * FROM Product WHERE cate       ryID = @cate       ryID
+	RETURN SELECT * FROM Product WHERE categoryID = @categoryID
 
-select count(*) from district
 CREATE TABLE   Province  (
 	 ID    int primary key  NOT NULL,
-	 Tỉnh    varchar  (50));
+	 Tỉnh    varchar  (50)
+);
 
 CREATE TABLE District(
 	 ID int primary key NOT NULL,
-	 `Quận Huyện` varchar(50),
+     `Quận Huyện` varchar(50),
 	 provinceID int   NULL
-     );
+);
 
 CREATE TABLE Ward  (
 	 ID    int   primary key ,
 	 `Phường Xã`   nvarchar  (50),
-	 districtID    int   NULL );
+	 districtID    int   NULL
+);
 
 
-CREATE FUNCTION       fn_getListWardByDistrictAndProvince  (@province nvarchar(50     );, @district nvarchar(50     );     );
+CREATE FUNCTION  fn_getListWardByDistrictAndProvince  (@province nvarchar(50     );, @district nvarchar(50     );     );
 	RETURNS TABLE
 AS
 	RETURN SELECT  Phường Xã   FROM Ward WHERE districtID IN (
 		SELECT ID FROM District WHERE  Quận / Huyện   = @district AND provinceID = (
 			SELECT ID FROM Province WHERE  Tỉnh   = @province
 																				       );
-															     );
+															);
 
 CREATE FUNCTION       fn_getListDistrictByProvince  (@province nvarchar(50     );     );
 	RETURNS TABLE

@@ -1,7 +1,12 @@
 package com.fashion.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
+@Data
+@NoArgsConstructor
 public class Customer implements Serializable {
     private int ID;
     private String name;
@@ -9,61 +14,27 @@ public class Customer implements Serializable {
     private String avatar;
     private String phone;
     private String address;
+    private int gender;
+    private String username;
+    private String password;
 
-    public Customer(int ID, String name, String email, String phone, String address, String avatar) {
-        this.ID = ID;
+    public Customer(String name, String email, String avatar, String phone, String address, int gender) {
         this.name = name;
         this.email = email;
         this.avatar = avatar;
         this.phone = phone;
         this.address = address;
+        this.gender = gender;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Customer(String name, String email, String avatar, String phone, String address, int gender, String username, String password) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
         this.address = address;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
     }
 }

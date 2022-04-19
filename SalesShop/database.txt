@@ -1,0 +1,9 @@
+Username: vvqS5JobTr
+
+Database name: vvqS5JobTr
+
+Password: hkHdzHt1yK
+
+Server: remotemysql.com
+
+Port: 3306

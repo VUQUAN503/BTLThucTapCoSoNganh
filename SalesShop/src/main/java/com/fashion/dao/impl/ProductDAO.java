@@ -11,8 +11,8 @@ public class ProductDAO extends AbstractDAO<Product> implements IProductDAO{
 
     @Override
     public int save(Product product) {
-        String sql = "INSERT INTO Product(name, urlImage, price, description, categoryID) values(?, ?, ?, ?, ?)";
-        return insert(sql, product.getProductName(), product.getUrlImage(), product.getPrice(), product.getDescription(), product.getCategoryID());
+        String sql = "INSERT INTO Product(name, image, price, status, description, categoryID) values(?, ?, ?, ?, ?, ?)";
+        return insert(sql, product.getProductName(), product.getUrlImage(), product.getPrice(), product.getStatus(), product.getDescription(), product.getCategoryID());
     }
 
     @Override
@@ -22,9 +22,9 @@ public class ProductDAO extends AbstractDAO<Product> implements IProductDAO{
     }
 
     @Override
-    public List<Product> getThreeItemsByCategoryID(int category, int limit) {
-        String sql = "SELECT * FROM fn_getProductByCategoryID(?) ORDER BY Name OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY";
-        return query(sql, new ProductMapper(), category, limit);
+    public List<Product> getThreeItemsByCategoryID(int category, int offset) {
+        String sql = "SELECT * FROM Product WHERE categoryID = ? LIMIT 3 OFFSET ?";
+        return query(sql, new ProductMapper(), category, offset);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ProductDAO extends AbstractDAO<Product> implements IProductDAO{
 
     @Override
     public boolean update(Product product) {
-        String sql = "UPDATE Product SET Name = ?, urlImage = ?, price = ?, description = ?, categoryID = ? WHERE ID = ?";
+        String sql = "UPDATE Product SET name = ?, image = ?, price = ?, description = ?, categoryID = ? WHERE ID = ?";
         return updateOrDelete(sql, product.getProductName()
                                  , product.getUrlImage()
                                  , product.getPrice()

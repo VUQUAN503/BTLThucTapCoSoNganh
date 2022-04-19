@@ -10,6 +10,7 @@ import java.util.List;
 public class AbstractDAO<T> implements GenericDAO<T> {
 
 
+    @SuppressWarnings("unused")
     private Connection getConnection(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -21,11 +22,11 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         return null;
     }
 
-    public Connection getConnectionMySQL(){
+    private Connection getConnection(boolean isMySQL){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/SalesShop";
-            return DriverManager.getConnection(url, "root", "");
+            String url = "jdbc:mysql://remotemysql.com:3306/vvqS5JobTr";
+            return DriverManager.getConnection(url, "vvqS5JobTr", "hkHdzHt1yK");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -39,7 +40,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            con = getConnection();
+            con = getConnection(true);
             assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);
@@ -62,7 +63,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         ResultSet resultSet = null;
         int id = 0;
         try {
-            con = getConnection();
+            con = getConnection(true);
             assert con != null;
             con.setAutoCommit(false);
             statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -91,7 +92,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         ResultSet resultSet = null;
         G data = null;
         try{
-            con = getConnection();
+            con = getConnection(true);
             assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);
@@ -112,7 +113,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try{
-            con = getConnection();
+            con = getConnection(true);
             assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);
@@ -132,7 +133,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         Connection con = null;
         PreparedStatement statement = null;
         try {
-            con = getConnection();
+            con = getConnection(true);
             assert con != null;
             statement = con.prepareStatement(sql);
             setParameter(statement, params);

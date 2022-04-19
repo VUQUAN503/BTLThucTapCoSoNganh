@@ -13,8 +13,12 @@ public class ProductMapper implements INewMapper<Product> {
                                resultSet.getString(2),
                                resultSet.getString(3),
                                resultSet.getInt(4),
-                               resultSet.getString(5),
-                               resultSet.getInt(6));
+                               resultSet.getInt(5),
+                               resultSet.getString(6),
+                               resultSet.getString(7),
+                               resultSet.getInt(8),
+                               resultSet.getString(9),
+                               resultSet.getInt(10));
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
