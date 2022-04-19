@@ -1,11 +1,11 @@
 package com.fashion.model;
 
 
-import java.lang.reflect.Method;
 
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println(Color.GREEN);
 //        Document doc = new Document();
 //        try {
 //            PdfWriter.getInstance(doc, new FileOutputStream("D:\\test.pdf"));
