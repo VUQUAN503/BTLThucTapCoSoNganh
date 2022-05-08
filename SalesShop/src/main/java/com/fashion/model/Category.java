@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Category implements Serializable {
     private int categoryID;
     private String categoryName;
     private String description;
+    private String image;
+    private int countProduct;
 }

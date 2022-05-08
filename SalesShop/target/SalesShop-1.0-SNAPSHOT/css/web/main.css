@@ -57,6 +57,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.nav__logo {
+    width: 200px;
+}
+.nav__logo img {
+    object-fit: cover;
+
+}
 
 .nav__menu--toggle {
     font-size: 2.4rem;
@@ -114,6 +121,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    height: 60px;
+}
+.navbar__header img {
+    height: 60px;
 }
 
 .navbar__header-icon--close {
@@ -227,20 +238,20 @@
     z-index: -1;
     margin-top: var(--height-header);
     padding-top: 40%;
-    background: url('../img/img-size-l/slide-img1.jpg') top / contain no-repeat;
+    background: url('../../images/slider/slider_3.webp') top / contain no-repeat;
     animation: slider ease-in infinite 10s alternate;
 }
 
 @keyframes slider {
     0% {
-        background: url('../img/img-size-l/slide-img1.jpg') top / contain no-repeat;
+        background: url('../../images/slider/slider_3.webp') top / contain no-repeat;
     }
     
     50% {
-        background: url('../img/img-size-l/slide-img2.jpg') top / contain no-repeat;
+        background: url('../../images/slider/slider_2.webp') top / contain no-repeat;
     }
     100% {
-        background: url('../img/img-size-l/slide-img1.jpg') top / contain no-repeat;
+        background: url('../../images/slider/slider_3.webp') top / contain no-repeat;
     }
 }
 
@@ -317,6 +328,8 @@
 .product__img {
     border-radius: 10px;
     transition: 1s;
+    object-fit: contain;
+    width: 100%;
 }
 
 .product__desc {
@@ -388,7 +401,7 @@
 .collection__content::before {
     content: "";
     position: absolute;
-    background: url('../img/logo/sale-bagde.png') no-repeat;
+    /*background: url('../img/logo/sale-bagde.png') no-repeat;*/
     top: -5px;
     right: 0;
     height: 90px;
@@ -547,7 +560,7 @@
     margin-top: 72px;
     position: relative;
     background-attachment: fixed;
-    background-image: url('../img/img-size-l/ps-testimonialt.jpg');
+    /*background-image: url('../img/img-size-l/ps-testimonialt.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -652,7 +665,13 @@
 .container__product-news {
     padding: 4px 8px;
 }
-
+.container__product-banner {
+    height: 250px;
+}
+.container__product-img {
+    object-fit: cover;
+    height: 100%;
+}
 .container__product-news--desc {
     font-size: 1.28rem;
     line-height: 1.7;

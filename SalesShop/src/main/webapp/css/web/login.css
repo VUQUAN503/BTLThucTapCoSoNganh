@@ -7,15 +7,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    height: 100vh;
+
+.form-login{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #49A2FA;
+    margin-top: 20px;
+    overflow: hidden;
+    background: #fafafa;
+    margin-top: 100px;
 }
 
-.container {
+.form-container {
     position: relative;
     max-width: 430px;
     width: 100%;
@@ -24,9 +27,10 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 0 20px;
+    border: .5px solid #49A2FA;
 }
 
-.container .forms {
+.form-container .forms {
     display: flex;
     align-items: center;
     height: 440px;
@@ -34,34 +38,34 @@ body {
     transition: height 0.2s ease;
 }
 
-.container .form {
+.form-container .form {
     width: 50%;
     padding: 30px;
     background-color: #fff;
     transition: margin-left 0.18s ease;
 }
 
-.container.active .login {
+.form-container.active .login {
     margin-left: -50%;
     opacity: 0;
     transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
 
-.container .signup {
+.form-container .signup {
     opacity: 0;
     transition: opacity 0.09s ease;
 }
 
-.container.active .signup {
+.form-container .active .signup {
     opacity: 1;
     transition: opacity 0.2s ease;
 }
 
-.container.active .forms {
+.form-container .active .forms {
     height: 600px;
 }
 
-.container .form .title {
+.form-container .form .title {
     position: relative;
     font-size: 27px;
     font-weight: 600;

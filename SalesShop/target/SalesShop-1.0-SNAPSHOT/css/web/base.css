@@ -19,6 +19,7 @@ a {
     --text-color: #4c4c4c;
     --red-color: #d50000;
     --height-header: 61px;
+    --primary: #49A2FA;
 }
 
 html {
@@ -58,7 +59,7 @@ html {
 
 .main-effect {
     position: relative;
-} 
+}
 
 .main-effect::after,
 .main-effect::before {
@@ -117,118 +118,176 @@ html {
     font-weight: 700;
     text-transform: uppercase;
 }
+/* CSS */
+/* Start */
 
-.container__products {
-    position: relative;
-    box-shadow: 0 0 3px rgb(0 0 0 / 40%);
+
+.tn-container-products {
+    margin-bottom: 20px;
+    box-shadow: 1px 0 5px #ccc;
 }
-
-
-.container__product-img {
-    
-}
-
-.container__banner {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: fadeIn linear 0.7s;
-}
-.container__product-banner:hover .container__banner {
-    display: block;
-    cursor: pointer;
-}
-
-.container__banner-img {
-
-}
-
-.container__desc {
-    padding: 8px 8px 16px;
-    text-align: center;
-}
-
-.container__product-ultra {
-    margin-bottom: 10px;
-}
-
-.container__product-name {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    font-weight: 700;
-    transition: 0.6s;
-    line-height: 1.4;
-    display: block;
-    text-decoration: none;
-}
-
-.container__product-name:hover {
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.container__product--price-sale {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--red-color);
-}
-
-.container__product--main-price {
-    font-size: 1.3rem;
-    text-decoration: line-through;
-}
-
-.container__product--new,
-.container__product--hot {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 1.6rem;
-    border-bottom-right-radius: 15px;
-    background-color: red;
-    color: var(--white-color);
-    font-weight: 500;
-    padding: 4px 8px;
-}
-
-.container__product--new {
-    background-color: var(--primary-color);
-}
-
-.container__product--percent {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    background-color: var(--red-color);
-    color: var(--white-color);
-    padding: 5px 10px;
-    font-size: 1.4rem;
-    transform: rotate(-20deg);
-    font-weight: 500;
-    animation: undulating linear 1s infinite alternate;
-}
-
-.container__product--percent::after,
-.container__product--percent::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+.tn-container-products .tn-container-products-img {
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
-    background-color: var(--red-color);
-    transform: rotate(30deg);
-    z-index: -1;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+.tn-container-products-heart {
+    position: absolute;
+    font-size: 1.8rem;
+    padding: 8px;
+    background-color: var(--white-color);
+    top: 65%;
+    left: -10%;
+    transform: translate(-50%,-50%);
+    transition: all 0.15s linear;
+    cursor: pointer;
+}
+.tn-container-products-heart-title {
+    background-color: var(--black-color);
+    position: absolute;
+    top: -30px;
+    left: -110%;
+    min-width: 110px;
+    display: flex;
+    padding: 2px 7px;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    border-radius: 4px;
+    display: none;
+}
+.tn-container-products-heart-title::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    bottom: -12px;
+    height: 13px;
+    left: 0;
+}
+.tn-container-products-heart-title::before {
+    content: "";
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom:10px solid transparent;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:10px solid var(--black-color)
+}
+.tn-container-products-heart:hover .tn-container-products-heart-title {
+    display: flex;
+}
+.tn-container-products:hover .tn-container-products-heart {
+    left: 50%;
+}
+.tn-container-products-heart:hover {
+    color: red;
+}
+.tn-container-products-add-cart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    background-color: var(--primary);
+    font-size: 2.2rem;
+    color: var(--white-color);
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    transform: scale(0);
+    transition: all 0.15s linear;
+    cursor: pointer;
+}
+.tn-container-products:hover .tn-container-products-add-cart {
+    transform: scale(1);
 }
 
-.container__product--percent::after {
-    transform: rotate(60deg);
-}   
 
+.tn-container-products-add-cart-text {
+    margin-left: 10px;
+}
+.tn-container-products-promotion {
+    position: absolute;
+    left: 0;
+    padding: 8px 10px;
+    color: var(--white-color);
+    font-size: 1.8rem;
+    top: 10px;
+}
+.tn-container-products-promotion-sale {
+    background-color: green;
+}
+.tn-container-products-promotion-sold-out {
+    background-color: red;
+}
+.tn-container-products-promotion-hot {
+    background-color: orange;
+}
+.tn-container-products-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:var(--white-color);
+    padding: 10px 20px;
+}
+.tn-container-products-left {
+}
+.tn-container-products-name {
+    font-size: 2rem;
+    font-size: 600;
+    color: var(--black-color);
+    line-height: 2.2rem;
+    height: 2.2rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.tn-container-products-name:hover {
+    color: var(--primary);
+}
+.tn-container-products-price {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-top: 8px;
+}
+.tn-container-products-price-new{
+    margin-right: 10px;
+}
+.tn-container-products-price-unit {
+
+}
+
+.tn-container-products-price-old {
+    text-decoration:line-through;
+}
+.tn-container-products-rigth {
+
+}
+.tn-container-products-rigth-icon-eye {
+    font-size: 2.2rem;
+    padding: 8px;
+    color: var(--black-color);
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.25s linear;
+}
+.tn-container-products:hover .tn-container-products-rigth-icon-eye {
+    opacity: 1;
+}
+.tn-container-products-rigth-icon-eye:hover {
+    color: var(--primary);
+}
+
+/* end */
 @keyframes undulating {
     0% {
         transform: scale(1);

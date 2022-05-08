@@ -1,11 +1,12 @@
 package com.fashion.model;
 
 public enum Color {
-    GREEN,
+    BLACK,
+    WHITE,
     RED,
     YELLOW,
-    GRAY,
+    AQUA,
     BLUE,
-    BLACK,
-    WHITE
+    GREEN,
+    GRAY;
 }
