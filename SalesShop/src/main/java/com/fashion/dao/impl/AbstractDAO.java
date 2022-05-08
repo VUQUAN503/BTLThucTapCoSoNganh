@@ -2,13 +2,16 @@ package com.fashion.dao.impl;
 
 import com.fashion.dao.GenericDAO;
 import com.fashion.mapper.INewMapper;
+import com.fashion.model.Product;
+import com.fashion.model.ProductDetail;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
-
 
     @SuppressWarnings("unused")
     private Connection getConnection(){
@@ -56,6 +59,35 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         return list;
     }
 
+    public Map<Object, Product> queryProduct(String sql, INewMapper<Product> productINewMapper, INewMapper<ProductDetail> productDetailMapper, Object... params) {
+        Map<Object, Product> list = new HashMap<>();
+        Connection con = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            con = getConnection(true);
+            assert con != null;
+            statement = con.prepareStatement(sql);
+            setParameter(statement, params);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                if(!list.containsKey(resultSet.getInt(1)))
+                {
+                    list.put(resultSet.getInt(1), productINewMapper.mapRow(resultSet));
+                    list.get(resultSet.getInt(1)).getDetail().add(productDetailMapper.mapRow(resultSet));
+                }else{
+                    list.get(resultSet.getInt(1)).getDetail().add(productDetailMapper.mapRow(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            closeCon(con, statement, resultSet);
+        }
+        return list;
+    }
+
     @Override
     public Integer insert(String sql, Object... params) {
         Connection con = null;
@@ -73,12 +105,13 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             if (resultSet.next()) id = resultSet.getInt(1);
             con.commit();
         } catch (SQLException e) {
+            e.printStackTrace();
             try {
                 con.rollback();
             } catch (SQLException e1) {
                 e1.printStackTrace();
-                return null;
             }
+            return null;
         } finally {
             closeCon(con, statement, resultSet);
         }

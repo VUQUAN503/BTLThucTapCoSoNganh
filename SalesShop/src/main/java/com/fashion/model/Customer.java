@@ -18,7 +18,8 @@ public class Customer implements Serializable {
     private String username;
     private String password;
 
-    public Customer(String name, String email, String avatar, String phone, String address, int gender) {
+    public Customer(int ID, String name, String email, String avatar, String phone, String address, int gender) {
+        this.ID = ID;
         this.name = name;
         this.email = email;
         this.avatar = avatar;
@@ -27,7 +28,8 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public Customer(String name, String email, String avatar, String phone, String address, int gender, String username, String password) {
+    public Customer(int ID, String name, String email, String avatar, String phone, String address, int gender, String username, String password) {
+        this.ID = ID;
         this.name = name;
         this.email = email;
         this.avatar = avatar;

@@ -1,168 +1,120 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<header class="header">
-    <div class="grid wide">
-
-        <input hidden type="checkbox" name="" class="top-search__input" id="top-search__input--toggle">
-        <div class="top-search">
-            <input class="top-search__input" type="text" placeholder="Từ khóa...">
-            <a href="" class="btn btn--primary-color main-effect">Tìm kiếm</a>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="ss-header">
+    <a href="/" class="ss-header-logo">
+        <div class="ss-header-logo-icon">
+            <i class="fas fa-shopping-cart"></i>
         </div>
-
-        <label for="top-search__input--toggle" class="top-search__overlay"></label>
-
-        <!-- nav -->
-        <nav class="nav">
-            <label for="nav__input--toggle" class="nav__menu">
-                <div class="nav__menu--toggle">
-                    <i class="nav__menu-icon fa-solid fa-bars"></i> <span class="s-hidden">Menu</span>
-                </div>
-            </label>
-
-            <div class="nav__logo">
-                <a href="#">
-                    <img class="" src="images/logo/mew-shoes.png" alt="">
-                </a>
+        <div class="ss-header-logo-text">
+            <div class="ss-header-logo-text-bold">
+                    <span class="ss-header-text-daily">
+                        daily
+                    </span>
+                <span class="ss-header-logo-text-shop">
+                        Shop
+                    </span>
             </div>
-
-            <div class="nav__purchase">
-                <label class="" for="top-search__input--toggle">
-                    <img class="nav__purchase-img" src="images/icon-img/search.png" alt="">
-                </label>
-                <a class="" href="views/web/login.jsp">
-                    <img class="nav__purchase-img" src="images/icon-img/account.png" alt="">
-                </a>
-                <a class="" href="#">
-                    <img class="nav__purchase-img s-hidden" src="images/icon-img/cart.png" alt="">
-                </a>
+            <div class="ss-header-logo-text-thin">
+                YOUR SHOPPING PARTNER
             </div>
-        </nav>
-    </div>
-
-    <input type="checkbox" hidden name="" class="nav__input" id="nav__input--toggle">
-
-    <!-- navbar -->
-    <label for="nav__input--toggle" class="navbar__overlay"></label>
-    <div class="navbar">
-        <div class="navbar__header">
-            <a href="#">
-                <img src="images/logo/mew-shoes.png" alt="">
-            </a>
-            <label for="nav__input--toggle">
-                <i class="navbar__header-icon--close far fa-times-circle"></i>
-            </label>
         </div>
-        <div class="navbar__body">
-            <ul class="navbar__info">
-                <li class="navbar__info-item">
-                    <a href="#" class="navbar__info-link">
-                        <i class="navbar__info-icon fas fa-store"></i>
-                        Cửa hàng Online</a>
-                </li>
-                <li class="navbar__info-item">
-                    <a href="#" class="navbar__info-link">
-                        <i class="navbar__info-icon far fa-paper-plane"></i>
-                        Hướng dẫn mua hàng</a>
-                </li>
-                <li class="navbar__info-item">
-                    <a href="#" class="navbar__info-link">
-                        <i class="navbar__info-icon fas fa-qrcode"></i>
-                        Thông tin thanh toán</a>
-                </li>
-                <li class="navbar__info-item">
-                    <a href="#" class="navbar__info-link">
-                        <i class="navbar__info-icon fas fa-store-alt"></i>
-                        Chuỗi cửa hàng MewShoes</a>
-                </li>
-            </ul>
+    </a>
+    <form action="">
+        <div class="ss-header-search">
+            <input type="text" class="ss-header-input-search" placeholder="Search here">
+            <button type="submit" class="ss-header-icon-search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+    <div class="ss-header-info">
+        <div class="ss-header-info-card">
+            <div class="ss-header-info-card-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <div class="ss-header-info-card-number" id="amount">
+                    2
+                </div>
+            </div>
+            <div class="ss-header-info-card-title">SHOPPING CART</div>
+            <input type="hidden" name="" id="customerID" value="${customer.ID}">
+            <div class="ss-header-info-mycart" id="cart">
+                <div class="ss-mycart-item">
+                    <div class="ss-mycart-item-img" style="background-image: url(https://file.tinnhac.com/resize/600x-/music/2018/08/25/jisoocarupdate-b6bf.jpg);">
 
-            <ul class="navbar__category">
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link navbar__category-link--color-primary" href="#">Trang chủ</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Giới thiệu</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Sản phẩm</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Giày thể thao</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Giày chạy</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Giày bóng rổ</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Tin tức</a>
-                </li>
-                <li class="navbar__category-item">
-                    <a class="navbar__category-link" href="#">Liên hệ</a>
-                </li>
-            </ul>
-
-            <div class="navbar__trademark">
-                <div class="navbar__trademark-list">
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/nb.jpg" alt="">
-                        </a>
                     </div>
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/converse.jpg" alt="">
-                        </a>
+                    <div class="ss-mycart-item-info">
+                        <div class="ss-mycart-item-name">
+                            Product Name
+                        </div>
+                        <div class="ss-mycart-info-coin">
+                            <span class="ss-mycart-info-number">1</span>
+                            x
+                            <span class="ss-mycart-info-price">$250</span>
+                        </div>
+                    </div>
+                    <div class="ss-mycart-info-delete-item">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
-                <div class="navbar__trademark-list">
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/clarks.jpg" alt="">
-                        </a>
+                <div class="ss-mycart-item">
+                    <div class="ss-mycart-item-img" style="background-image: url(https://file.tinnhac.com/resize/600x-/music/2018/08/25/jisoocarupdate-b6bf.jpg);">
+
                     </div>
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/v-color.jpg" alt="">
-                        </a>
+                    <div class="ss-mycart-item-info">
+                        <div class="ss-mycart-item-name">
+                            Product Name
+                        </div>
+                        <div class="ss-mycart-info-coin">
+                            <span class="ss-mycart-info-number">1</span>
+                            x
+                            <span class="ss-mycart-info-price">$250</span>
+                        </div>
+
+                    </div>
+                    <div class="ss-mycart-info-delete-item">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
-                <div class="navbar__trademark-list">
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/vans.jpg" alt="">
-                        </a>
+                <div class="ss-mycart-total">
+                    <div class="ss-mycart-total-title">
+                        Total
                     </div>
-                    <div class="navbar__trademark-item">
-                        <a href="#">
-                            <img class="navbar__trademark-img" src="images/trademark/puma.jpg" alt="">
-                        </a>
+                    <div class="ss-mycart-total-price">
+                        <span>$</span><span class="ss-mycart-total-number">500</span>
+                    </div>
+                </div>
+                <div class="ss-mycart-checkout">
+                    <div class="ss-mycart-btn-checkout">
+                        Checkout
                     </div>
                 </div>
             </div>
-
-            <ul class="navbar__socials">
-                <li class="navbar__socials-item">
-                    <a class="navbar__socials-link" href="#">
-                        <img src="images/social-network/facebook.png" alt="">
-                    </a>
-                </li>
-                <li class="navbar__socials-item">
-                    <a class="navbar__socials-link" href="#">
-                        <img src="images/social-network/twitter.png" alt="">
-                    </a>
-                </li>
-                <li class="navbar__socials-item">
-                    <a class="navbar__socials-link" href="#">
-                        <img src="images/social-network/instagram.png" alt="">
-                    </a>
-                </li>
-                <li class="navbar__socials-item">
-                    <a class="navbar__socials-link" href="#">
-                        <img src="images/social-network/youtube.png" alt="">
-                    </a>
-                </li>
-            </ul>
+        </div>
+        <div class="ss-header-info-user">
+            <div class="ss-header-info-user-avt">
+                <i class="fa-solid fa-user"></i>
+                <i id="name"><c:if test="${not empty customer}">${customer.username}</c:if></i>
+            </div>
+            <c:if test="${empty customer}">
+                <div class="ss-header-info-user-hover">
+                    <div class="ss-user-info ss-user-info-title">
+                        <a class="ss-user-info-link" href="views/web/login.jsp">Đăng nhập</a>
+                    </div>
+                </div>
+            </c:if>
+            <c:if test="${not empty customer}">
+                <div class="ss-header-info-user-hover">
+                    <div class="ss-user-info ss-user-info-title">
+                        <a class="ss-user-info-link" href="views/web/profile.jsp">Thông tin cá nhân</a>
+                    </div>
+                    <div class="ss-cart-user ss-user-info-title">
+                        <a class="ss-user-info-link" href="views/web/">Đơn hàng</a>
+                    </div>
+                    <div class="ss-user-logout ss-user-info-title">
+                        <a class="ss-user-info-link" href="logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:if>
         </div>
     </div>
-</header>
+</div>

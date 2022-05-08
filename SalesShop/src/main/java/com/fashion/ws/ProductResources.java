@@ -1,34 +1,25 @@
 package com.fashion.ws;
 
 import com.fashion.dao.ICategoryDAO;
-import com.fashion.dao.IProductDAO;
 import com.fashion.model.Product;
 import com.fashion.model.ResponseObject;
+import com.fashion.service.IProductService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Path("/products")
 public class ProductResources {
 
     @Inject
-    private IProductDAO dao;
+    private IProductService dao;
 
     @Inject
     private ICategoryDAO categoryDAO;
-
-    @Context
-    private UriInfo uriInfo;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -57,10 +48,10 @@ public class ProductResources {
     public Response getByCategory(@PathParam("categoryID") int categoryID){
         try {
             Map<Object, Object> data = new HashMap<>();
-            List<Product> list = dao.getByCategory(categoryID);
+            Map<Object, Product> products = dao.getByCategory(categoryID);
             data.put("name", categoryDAO.getName(categoryID));
-            data.put("amount", list.size());
-            data.put("products", list);
+            data.put("amount", products.size());
+            data.put("products", products);
             return Response.status(Response.Status.OK).entity(new ResponseObject(
                     "ok",
                     "success",
@@ -68,6 +59,7 @@ public class ProductResources {
             )).build();
         }catch (Exception e)
         {
+            e.printStackTrace();
             return Response.status(Response.Status.NOT_ACCEPTABLE).entity(new ResponseObject(
                     "false",
                     e.getMessage(),
@@ -83,11 +75,10 @@ public class ProductResources {
     {
         try {
             Map<Object, Object> data = new HashMap<>();
-            List<Product> list = dao.getThreeItemsByCategoryID(categoryID, limit);
-            list.stream().sorted(Comparator.comparing(Product::getPrice));
+            Map<Object, Product> products = dao.getThreeItemsByCategoryID(categoryID, limit);
             data.put("name", categoryDAO.getName(categoryID));
-            data.put("amount", list.size());
-            data.put("products", list);
+            data.put("amount", products.size());
+            data.put("products", products);
             return Response.status(Response.Status.OK).entity(new ResponseObject(
                     "ok",
                     "success",
@@ -105,23 +96,18 @@ public class ProductResources {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response save(Product product) throws URISyntaxException {
+    public Response save(Product product) {
         try {
-            Integer productID = dao.save(product);
-            URI url = new URI(uriInfo.getBaseUri() + "products/" + productID);
-            return Response.created(url).entity(new ResponseObject(
-                    "ok",
-                    "product created successfully",
-                    product
-            )).build();
+            dao.save(product);
         }catch (Exception e){
             e.printStackTrace();
             return Response.status(Response.Status.NOT_ACCEPTABLE).entity(new ResponseObject(
-                    "false",
+                    "FAIL",
                     e.getMessage(),
                     ""
             )).build();
         }
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @PUT

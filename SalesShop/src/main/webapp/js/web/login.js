@@ -6,7 +6,12 @@ name.onblur = ()=>{
     if(name.value === ""){
         name.focus()
         name.placeholder = "trường dữ liệu không được bỏ trống"
+        name.style.caretColor = 'red'
     }
+}
+
+const error = (message, icon)=>{
+
 }
 
 pass.onblur = ()=>{

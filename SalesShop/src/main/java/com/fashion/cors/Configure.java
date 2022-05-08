@@ -4,7 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@SuppressWarnings("unused")
 public class Configure implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

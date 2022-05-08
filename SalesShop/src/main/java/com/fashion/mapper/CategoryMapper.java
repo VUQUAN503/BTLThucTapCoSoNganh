@@ -10,11 +10,14 @@ public class CategoryMapper implements INewMapper<Category> {
     @Override
     public Category mapRow(ResultSet resultSet) {
         try {
-            return new Category(resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3)
+            return new Category(1,
+                                resultSet.getString("name"),
+                                resultSet.getString("description"),
+                                resultSet.getString("image"),
+                                resultSet.getInt("count")
                                );
         } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }
